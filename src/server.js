@@ -39,6 +39,8 @@ const START_SERVER = () => {
   }
 })()
 
+//
+
 // CONNECT_DB()
 //   .then(() => console.log('Connected to mongo db cloud'))
 //   .then(() => START_SERVER())
