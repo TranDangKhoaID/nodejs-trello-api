@@ -69,3 +69,4 @@ export const boardValidation = {
   update,
   moveCardToDifferentColumn
 }
+
