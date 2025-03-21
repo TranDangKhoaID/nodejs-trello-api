@@ -22,9 +22,16 @@ const START_SERVER = () => {
   //Middleware xử lí lỗi tập trung
   app.use(errorHandlingMiddleware)
 
-  app.listen(env.APP_PORT, env.APP_HOST, () => {
-    console.log(`Hello ${env.AUTHOR}, I am running at http://${env.APP_HOST}:${env.APP_PORT}/`)
-  })
+  if (env.BUILD_MODE === 'production') {
+    app.listen(process.env.PORT, () => {
+      console.log(`Production ${env.AUTHOR}, I am running at PORT: ${process.env.PORT}`)
+    })
+  } else {
+    //mode dev
+    app.listen(env.APP_PORT, env.APP_HOST, () => {
+      console.log(`Local Dev ${env.AUTHOR}, I am running at http://${env.APP_HOST}:${env.APP_PORT}/`)
+    })
+  }
 
   exitHook(() => {
     CLOSE_DB()
